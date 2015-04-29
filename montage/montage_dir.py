@@ -4,15 +4,22 @@ from my_montage_maker import *
 import math
 from PIL import Image
 import os
+import sys
 
-output_path = "/Users/myazdaniUCSD/Documents/kaggle/DriverTelematics/"
-src_path, image_type = "/Users/myazdaniUCSD/Documents/kaggle/DriverTelematics/figures", ".png"
+if len(sys.argv) < 2:
+    print "Include input path, output path, and image type"
+    sys.exit()
+else:
+    src_path = sys.argv[1] #input path
+    output_path = sys.argv[2] #output path
+    image_type = sys.argv[3] #image type (jpg, png, etc)
+
+photow,photoh = 100,100
  
 path_parents = []  
 for root, dirs, files in os.walk(src_path):
   path_parents.append([os.path.join(root, f) for f in files if f.endswith(image_type)])
 
-photow,photoh = 400,400
 
 for path_parent in path_parents:
     if len(path_parent) == 0: continue
