@@ -20,7 +20,7 @@ def create_hourly_colors(lines, out_file):
 
     hours = set([line[1] for line in lines[0:]])
     hours_colors = {}
-    width = 500
+    width = 100
     for hour in hours:
         #hsv_colors = array([list(map(lambda x: float(x) - 1.0, line[2:])) for line in lines[0:] if line[1] == hour])
         hsv_colors = array([list(map(lambda x: float(x), line[2:])) for line in lines[0:] if line[1] == hour])
