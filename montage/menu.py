@@ -10,18 +10,20 @@ class Menu:
 		"1": self.montage_dir,
 		"2": self.montage_from_csv,
 		"3": self.vertical_montage_from_csv,
-		"4": self.quit
+		"4": self.image_hist_from_csv,
+		"5": self.quit
 		}
 
 	def display_menu(self):
 		print("""
-			PyMontage Menu
+PyMontage Menu
 
-			1. Create montages from given directory (recursively make montages from sub-directories)
-			2. Create montages from provided CSV files (split by categories or bins)
-			3. Create vetical montge from provided CSV file
-			4. Quit 
-			""")
+1. Create montages from recursively from given directory and sub-directories
+2. Create montages from provided CSV files (split by categories or bins)
+3. Create vetical montge from provided CSV file
+4. Create image histogram from provided CSV file
+5. Quit 
+""")
 
 	def run(self):
 		'''Display the menu and responsd to choices'''
@@ -73,6 +75,13 @@ class Menu:
 		self.montage.input_data(src_path = input_csv, dest_path = output_dir, image_src_path = image_path)
 		print("Creating montages...")
 		self.montage.montage_from_csv_binned(ncols = 0, nrows = 1)		
+
+	def image_hist_from_csv(self):
+		input_CSV = self.enter_csv("Provide full path to csv file for creating image histogram: ")
+		output_dir = self.enter_dir("Provide full path and fielname to  save image histogram: ")
+		self.montage.input_data(src_path = input_csv, dest_path = output_dir, image_src_path = image_path)
+		print("Creating image histogram...")
+		self.create_image_hist()
 
 
 	def quit(self):

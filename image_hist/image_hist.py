@@ -75,6 +75,6 @@ def create_image_hist(in_file, out_file):
 
 
 if  __name__ =='__main__':
-	out_file = '/Users/myazdaniUCSD/Desktop/boston-april-18.png'
-	in_file = '/Users/myazdaniUCSD/Desktop/boston-2013-04-18.csv'
+	out_file = '/Users/myazdaniUCSD/Desktop/boston-bombing-week.png'
+	in_file = '/Users/myazdaniUCSD/Documents/twitter-diurnal-analysis/data/boston_image_hist.csv'
 	create_image_hist(in_file, out_file)
