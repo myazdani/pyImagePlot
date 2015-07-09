@@ -114,12 +114,12 @@ class Montages:
 		#getting the total number of bins
 		NumBins = len(bins)
 		#size of each image
-		size = 50
+		size = 275
 		size1 = size + 5
 		graphH = size1 * height
 		graphW = size1 * NumBins
 		#creating the background window
-		img = Image.new('RGB',(graphW,graphH),(0,0,0))
+		img = Image.new('RGB',(graphW,graphH),(255,255,255))
 		SIZES = size, size
 		#for loop to loop through each bin and paste
 
@@ -140,7 +140,8 @@ class Montages:
 
 		#end of the for loop
 		#saving the img into a png image
-		img.save(self.dest_path)
+		print self.dest_path
+		img.save(self.dest_path + "hist.png" )
 
 
 

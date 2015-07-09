@@ -79,9 +79,9 @@ PyMontage Menu
 	def image_hist_from_csv(self):
 		input_CSV = self.enter_csv("Provide full path to csv file for creating image histogram: ")
 		output_dir = self.enter_dir("Provide full path and fielname to  save image histogram: ")
-		self.montage.input_data(src_path = input_csv, dest_path = output_dir, image_src_path = image_path)
+		self.montage.input_data(src_path = input_CSV, dest_path = output_dir)
 		print("Creating image histogram...")
-		self.create_image_hist()
+		self.montage.create_image_hist()
 
 
 	def quit(self):

@@ -3,11 +3,11 @@ from PIL import Image, ImageDraw
 from pylab import *
 import csv
 
-in_file = "test.csv"
+in_file = "PNAR-tsne-HOG-color.csv"
 out_file = "res.jpg"
 
 rows = []
-with open('test.csv', 'rb') as f:
+with open(in_file, 'rb') as f:
     reader = csv.reader(f)
     for row in reader:
         rows.append(row)
