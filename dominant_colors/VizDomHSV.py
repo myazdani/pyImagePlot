@@ -25,10 +25,10 @@ def create_hourly_colors(lines, out_file):
         #hsv_colors = array([list(map(lambda x: float(x) - 1.0, line[2:])) for line in lines[0:] if line[1] == hour])
         hsv_colors = array([list(map(lambda x: float(x), line[2:])) for line in lines[0:] if line[1] == hour])
         hsv_colors[:,0] = 0 # keep hue fixed
-        hsv_colors[:,1] = 0 # keep saturation fixed
-        #hsv_colors[:,2] = 255 # keep value fixed
+        #hsv_colors[:,1] = 100 # keep saturation fixed
+        hsv_colors[:,2] = 255 # keep value fixed
         #hsv_colors = hsv_colors[hsv_colors[:,0].argsort()]
-        ind = lexsort((hsv_colors[:,0], hsv_colors[:,1], hsv_colors[:,2]))
+        ind = lexsort((hsv_colors[:,1], hsv_colors[:,0], hsv_colors[:,2]))
         hsv_colors = hsv_colors[ind]
         height = hsv_colors.shape[0]
         hsv = reshape(hsv_colors, (height, 1, 3))
