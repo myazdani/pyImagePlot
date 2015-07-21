@@ -4,7 +4,7 @@ Functions for creating Image montages and Image histograms in Python.
 
 ## Installation
 
-Currently pyImagePlot is not pip-installable and you will have to download the entire repo and the dependecies to use. Easiest way to ensure all dependencies are present is to obtain the Anaconda distribution of Python 2.7
+Currently pyImagePlot is not pip-installable and you will have to download the entire repo and the dependecies to use. Easiest way to ensure all dependencies are present is to obtain the Anaconda distribution of Python 2.7. Down this distribution from [here](http://continuum.io/downloads).
 
 ## Usage
 
