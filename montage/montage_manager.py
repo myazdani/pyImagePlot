@@ -65,7 +65,6 @@ class Montages:
 
 	def montage_from_csv_binned(self, ncols = None, nrows = None):
 		rows = self._return_rows(self.src_path)
-		rows.pop(0)
 		header = rows.pop(0)
 		bins = list(set([row[1] for row in rows]))
 		path_parents = {}
@@ -92,7 +91,10 @@ class Montages:
 		#for loop to read through the csv file
 		for row in data:
 			#first read the bin into a string
-			bin = int(row[1])
+			try:
+				bin = int(row[1])
+			except:
+				continue
 		    #check if this key already exists in the dict
 			if bin not in bins.keys():
 		    	#if not create a new list at that bin index
