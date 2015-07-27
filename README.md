@@ -10,6 +10,8 @@ Currently pyImagePlot is not pip-installable and you will have to download the e
 
 We have some demos on Vimeo showing how to use pyImagePlot. 
 
+[![create montages from recursively from given directory and sub-directories](http://imgur.com/IuOV2KX,pRw9kML,b9cuANb#0)](https://vimeo.com/134642058)
+
 1. [Demo 1](https://vimeo.com/134642058): create montages from recursively from given directory and sub-directories
 2. [Demo 2](https://vimeo.com/134628459): Create montages from provided CSV files (split by categories or bins)
 3. [Demo 3](https://vimeo.com/134639426): Create image histogram from provided CSV file
