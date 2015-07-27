@@ -6,16 +6,6 @@ Functions for creating Image montages and Image histograms in Python.
 
 Currently pyImagePlot is not pip-installable and you will have to download the entire repo and the dependecies to use. Easiest way to ensure all dependencies are present is to obtain the Anaconda distribution of Python 2.7. Down this distribution from [here](http://continuum.io/downloads).
 
-## Demos
-
-We have some demos on Vimeo showing how to use pyImagePlot. 
-
-[![create montages from recursively from given directory and sub-directories](http://i.imgur.com/IuOV2KX.jpg =60x20)](https://vimeo.com/134642058)
-
-1. [Demo 1](https://vimeo.com/134642058): create montages from recursively from given directory and sub-directories
-2. [Demo 2](https://vimeo.com/134628459): Create montages from provided CSV files (split by categories or bins)
-3. [Demo 3](https://vimeo.com/134639426): Create image histogram from provided CSV file
-
 ## Usage
 
 From the directory of the repo, run
@@ -40,6 +30,17 @@ Enter an option:
 ```
 
 
+## Demos
+We have some demos on Vimeo showing how to use pyImagePlot. 
+
+Create montages from recursively from given directory and sub-directories:
+[![](http://i.imgur.com/IuOV2KX.jpg)](https://vimeo.com/134642058)
+
+Create montages from provided CSV files (split by categories or bins):
+[![](http://i.imgur.com/pRw9kML.jpg)](https://vimeo.com/134628459)
+
+Create image histogram from provided CSV file:
+[![](http://i.imgur.com/b9cuANb.jpg)](https://vimeo.com/134639426)
 
 ## Contributing
 
