@@ -114,7 +114,7 @@ class Montages:
 		#getting the total number of bins
 		NumBins = len(bins)
 		#size of each image
-		size = 275
+		size = 75
 		size1 = size + 5
 		graphH = size1 * height
 		graphW = size1 * NumBins
