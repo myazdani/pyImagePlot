@@ -65,6 +65,7 @@ class Montages:
 
 	def montage_from_csv_binned(self, ncols = None, nrows = None):
 		rows = self._return_rows(self.src_path)
+		rows.pop(0)
 		header = rows.pop(0)
 		bins = list(set([row[1] for row in rows]))
 		path_parents = {}
