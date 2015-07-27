@@ -30,6 +30,17 @@ Enter an option:
 ```
 
 
+## Demos
+We have some demos on Vimeo showing how to use pyImagePlot. 
+
+### Create montages from recursively from given directory and sub-directories:
+[![](http://i.imgur.com/IuOV2KX.jpg)](https://vimeo.com/134642058)
+
+### Create montages from provided CSV files (split by categories or bins):
+[![](http://i.imgur.com/pRw9kML.jpg)](https://vimeo.com/134628459)
+
+### Create image histogram from provided CSV file:
+[![](http://i.imgur.com/b9cuANb.jpg)](https://vimeo.com/134639426)
 
 ## Contributing
 
