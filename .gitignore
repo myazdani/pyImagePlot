@@ -1,5 +1,6 @@
 *.csv
 *.jpg
 *.png
+*.move
 !sample_data/Rothko_images/*.jpg
 !sample_data/Rothko_tsne_hist.csv
