@@ -48,7 +48,7 @@ def make_contact_sheet(fnames,(ncols,nrows),(photow,photoh),
             bbox = (left,upper,right,lower)
             try:
                 # Read in an image and resize appropriately
-                img = Image.open(fnames[count]).resize((photow,photoh))
+                img = Image.open(fnames[count]).resize((photow,photoh), Image.ANTIALIAS)
             except:
                 break
             inew.paste(img,bbox)
