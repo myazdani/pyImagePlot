@@ -8,14 +8,18 @@ from operator import itemgetter
 import os
 import sys
 import heapq
+import pandas as pd
 
 class Montages:
 	'''Create and manage montages'''
-	def __init__(self):
+	def __init__(self, src_path, dest_path = "", image_src_path = ""):
 		self.photow = 75
 		self.photoh = 75
 		#self.photow = 12000
 		#self.photoh = 1000
+		self.src_path = src_path
+		self.dest_path = dest_path
+		self.image_src_path  = image_src_path
 		self.image_type = (".jpg", ".JPG", ".PNG", ".png", ".tiff", ".TIFF", ".jpeg", ".JPEG")
 
 	def _return_rows(self, filename, file_encoding = 'rU'):
@@ -52,19 +56,32 @@ class Montages:
 		margins = [0,0,0,0]
 		padding = 0
 		inew = make_contact_sheet(image_paths,(ncols,nrows),photo,margins,padding)
-		inew.save(self.dest_path + montage_filename + ".jpg")
+		#inew.save(self.dest_path + montage_filename + ".jpg")
+		return inew
 
-	def montages_from_directory(self):
+
+	def montages_from_directory(self, thumb_w = 75, thumb_h = 75):
 		'''create montages from given directory recursively'''
+		self.photow = thumb_w
+		self.photoh = thumb_h
 		path_parents = self._get_paths_from_dir(self.src_path)
+		montages_created = []
 		for path_parent in path_parents:
 			if len(path_parent) == 0: continue
 			path_split = path_parent[0].split(self.src_path)[1].split("/")[0]
 			montage_filename = path_split + "_montage"
-			self.create_montage(path_parent, montage_filename)
+			montages_created.append(self.create_montage(path_parent, montage_filename))
 
-	def montage_from_csv_binned(self, ncols = None, nrows = None):
-		rows = self._return_rows(self.src_path)
+		return montages_created
+
+	def read_data(self):
+		# df = pd.read_csv(self.src_path, header = True)
+		df = self._return_rows(self.src_path)
+		return df
+
+	def montage_from_csv_binned(self, data, ncols = None, nrows = None):
+		#rows = self._return_rows(self.src_path)
+		rows = data
 		header = rows.pop(0)
 		bins = list(set([row[1] for row in rows]))
 		path_parents = {}

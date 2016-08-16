@@ -49,7 +49,9 @@ PyMontage Menu
 		output_dir = self.enter_dir("Provide full path to valid direcotry to save montages: ")
 		self.montage.input_data(src_path = input_dir, dest_path = output_dir)
 		print("Creating montages...")
-		self.montage.montages_from_directory()
+		created_montages = self.montage.montages_from_directory()
+		for i, created_montage in enumerate(created_montages):
+			created_montage.save(output_dir + "/montage-" + str(i) + ".jpg")
 		print("Saving montages complete.")
 
 	def enter_csv(self, message = "provide path to valid csv"):
@@ -66,7 +68,8 @@ PyMontage Menu
 		output_dir = self.enter_dir("Provide full path to valid direcotry to save montages: ")
 		self.montage.input_data(src_path = input_csv, dest_path = output_dir, image_src_path = image_path)
 		print("Creating montages...")
-		self.montage.montage_from_csv_binned()
+		data = self.read_data()
+		self.montage.montage_from_csv_binned(data)
 
 	def vertical_montage_from_csv(self):
 		input_csv = self.enter_csv("Provide full path to csv file for creating montages: ")
