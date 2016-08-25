@@ -10,7 +10,7 @@ class Menu:
 		self.choices = {
 		"1": self.montage_dir,
 		"2": self.montage_from_csv,
-		"3": self.vertical_montage_from_csv,
+		"3": self.img_scatter,
 		"4": self.image_hist_from_csv,
 		"5": self.quit
 		}
@@ -73,7 +73,13 @@ PyMontage Menu
 		print("Saving montages complete.")
 
 
-		self.montage.montage_from_csv_binned(ncols = 0, nrows = 1)		
+	def img_scatter(self):
+		input_csv = self.enter_csv("Provide full path to csv file for creating image scatter plot: ")
+		output_dir = self.enter_dir("Provide full path and name to valid direcotry to save image scatter plot: ")
+		print("Creating image scatter plot...")
+		df = pd.read_csv(input_csv)
+		created_img_scatter = self.montage.scatter(df)
+		created_img_scatter.save(output_dir)
 
 	def image_hist_from_csv(self):
 		input_CSV = self.enter_csv("Provide full path to csv file for creating image histogram: ")
