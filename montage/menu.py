@@ -1,6 +1,7 @@
 import sys
 import os
 from montage_manager import Montages
+import pandas as pd
 
 class Menu:
 	'''Display menu and respond to choices when run.'''
@@ -17,7 +18,6 @@ class Menu:
 	def display_menu(self):
 		print("""
 PyMontage Menu
-
 1. Create montages from recursively from given directory and sub-directories
 2. Create montages from provided CSV files (split by categories or bins)
 3. Create vetical montge from provided CSV file
@@ -64,19 +64,15 @@ PyMontage Menu
 
 	def montage_from_csv(self):
 		input_csv = self.enter_csv("Provide full path to csv file for creating montages: ")
-		image_path = self.enter_dir("Provide path to where images are located: ")
 		output_dir = self.enter_dir("Provide full path to valid direcotry to save montages: ")
-		self.montage.input_data(src_path = input_csv, dest_path = output_dir, image_src_path = image_path)
 		print("Creating montages...")
-		data = self.read_data()
-		self.montage.montage_from_csv_binned(data)
+		df = pd.read_csv(input_csv)
+		created_montages = self.montage.binned_montage(df)
+		for i, created_montage in enumerate(created_montages):
+			created_montage.save(output_dir + "/montage-" + str(i) + ".png")
+		print("Saving montages complete.")
 
-	def vertical_montage_from_csv(self):
-		input_csv = self.enter_csv("Provide full path to csv file for creating montages: ")
-		image_path = self.enter_dir("Provide path to where images are located: ")
-		output_dir = self.enter_dir("Provide full path to valid direcotry to save montages: ")
-		self.montage.input_data(src_path = input_csv, dest_path = output_dir, image_src_path = image_path)
-		print("Creating montages...")
+
 		self.montage.montage_from_csv_binned(ncols = 0, nrows = 1)		
 
 	def image_hist_from_csv(self):

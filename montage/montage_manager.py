@@ -12,7 +12,7 @@ import pandas as pd
 
 class Montages:
 	'''Create and manage montages'''
-	def __init__(self, src_path, dest_path = "", image_src_path = ""):
+	def __init__(self, src_path ="", dest_path = "", image_src_path = ""):
 		self.photow = 75
 		self.photoh = 75
 		#self.photow = 12000
@@ -78,7 +78,7 @@ class Montages:
 		# df = pd.read_csv(self.src_path, header = True)
 		df = self._return_rows(self.src_path)
 		return df
-
+	'''
 	def montage_from_csv_binned(self, data, ncols = None, nrows = None):
 		#rows = self._return_rows(self.src_path)
 		rows = data
@@ -95,6 +95,31 @@ class Montages:
 		for bin in path_parents.keys():
 			montage_filename = "bin_" + bin
 			self.create_montage(path_parents[bin], montage_filename, ncols, nrows)
+	'''
+
+	def binned_montage(self, df, img_paths_col = None, bins_col = None, vals_col = None):
+		#rows = self._return_rows(self.src_path)
+		if img_paths_col in df.columns and bins_col in df.columns and vals_col in df.columns:
+			df_rel = df[[img_paths_col, bins_col, vals_col]]
+		else:
+			df_rel = df.iloc[:,range(3)]
+		data = df_rel.values.tolist()
+		rows = data
+		header = rows.pop(0)
+		bins = list(set([row[1] for row in rows]))
+		path_parents = {}
+		for bin in bins:
+			if len(header) > 2:
+				unsorted_list = [[self.image_src_path + row[0], float(row[-1])] for row in rows if row[1] == bin]
+				sorted_list = sorted(unsorted_list, key=itemgetter(1))
+				path_parents[bin] = [item[0] for item in sorted_list]
+			else:
+				path_parents[bin] = [self.image_src_path + row[0] for row in rows if row[1] == bin]
+		montages_created = []
+		for bin in path_parents.keys():
+			montage_filename = "bin_" + bin
+			montages_created.append(self.create_montage(path_parents[bin], montage_filename, ncols, nrows))
+		return montages_created
 
 	def create_image_hist(self):
 		#first opening the csv file to be read
