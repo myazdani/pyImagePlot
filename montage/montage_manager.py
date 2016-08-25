@@ -121,8 +121,7 @@ class Montages:
 			montages_created.append(self.create_montage(path_parents[bin], montage_filename, ncols, nrows))
 		return montages_created
 
-
-def scatter(self, df, img_w = 20000, img_h = 20000, thumb_w = 175, thumb_h = 175, img_paths_col = None, x_col = None, y_col = None):
+	def scatter(self, df, img_w = 20000, img_h = 20000, thumb_w = 175, thumb_h = 175, img_paths_col = None, x_col = None, y_col = None):
 		if img_paths_col in df.columns and x_col in df.columns and y_col in df.columns:
 			df_rel = df[[img_paths_col, x_col, y_col]]
 		else:
@@ -147,7 +146,6 @@ def scatter(self, df, img_w = 20000, img_h = 20000, thumb_w = 175, thumb_h = 175
 		  img.paste(nodeim,(int(scaled[i][0]-ns[0]//2),int(scaled[i][1]-ns[1]//2),int(scaled[i][0]+ns[0]//2+1),int(scaled[i][1]+ns[1]//2+1))) 
 
 		return img
-
 
 	def create_image_hist(self):
 		#first opening the csv file to be read
