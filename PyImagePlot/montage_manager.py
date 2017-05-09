@@ -60,10 +60,12 @@ class Montages:
 		return inew, montage_filename
 
 
-	def montages_from_directory(self, thumb_w = 75, thumb_h = 75):
+	def montages_from_directory(self, thumb_w = 75, thumb_h = 75, src_path = None):
 		'''create montages from given directory recursively'''
 		self.photow = thumb_w
 		self.photoh = thumb_h
+		if src_path is not None:
+			self.src_path = src_path
 		path_parents = self._get_paths_from_dir(self.src_path)
 		montages_created = []
 		for path_parent in path_parents:
@@ -117,7 +119,7 @@ class Montages:
 				path_parents[bin] = [self.image_src_path + row[0] for row in rows if row[1] == bin]
 		montages_created = []
 		for bin in path_parents.keys():
-			montage_filename = "bin_" + bin
+			montage_filename = "bin_" + str(bin)
 			print "number of images:", len(path_parents[bin])           
 			montages_created.append(self.create_montage(path_parents[bin], montage_filename, ncols = None, nrows = None))
 		return montages_created
@@ -150,8 +152,11 @@ class Montages:
 
 	def create_image_hist(self, src_path = None):
 		#first opening the csv file to be read
-		f = open(self.src_path, 'rb')
-		data = csv.reader(f)
+		#f = open(self.src_path, 'rb')
+		#data = csv.reader(f)
+		if src_path is not None:
+			self.src_path = src_path
+		data = self.read_data()
 
 		#initializing the heapq to be read into
 		heap = []
